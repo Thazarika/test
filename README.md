@@ -18,66 +18,87 @@ jupyter:
   nbformat_minor: 5
 ---
 
-::: {#e407a8e8 .cell .code execution_count="3"}
+<div class="cell code" execution_count="3">
+
 ``` python
 from symbolsearch import SearchScrip
 import logging
 ```
-:::
 
-::: {#26c9776c .cell .code execution_count="5"}
+</div>
+
+<div class="cell code" execution_count="5">
+
 ``` python
 logging.basicConfig(level=logging.DEBUG)
 ```
-:::
 
-::: {#acedb18b .cell .code execution_count="6"}
+</div>
+
+<div class="cell code" execution_count="6">
+
 ``` python
 sc = SearchScrip()
 ```
-:::
 
-::: {#3596c760 .cell .markdown}
+</div>
+
+<div class="cell markdown">
+
     Now its needed to initialize symbols of the required exchanges. 
 
     It will not not download the symbolmaster for a exchange within the same day unless
 
     it is specified by using hard_refresh=True
-:::
 
-::: {#bffb2ceb .cell .code execution_count="8"}
+</div>
+
+<div class="cell code" execution_count="8">
+
 ``` python
 exch_list = ['NSE', 'NFO']
 sc.initialize_symbols(exch_list=exch_list)
 ```
-:::
 
-::: {#be69b37a .cell .markdown}
+</div>
+
+<div class="cell markdown">
+
 get_expiry(exch, instrument, symbol, expiry) By default, it returns
 current expiry of banknifty options
-:::
 
-::: {#591a028e .cell .code execution_count="9"}
+</div>
+
+<div class="cell code" execution_count="9">
+
 ``` python
 sc.get_expiry()
 ```
 
-::: {.output .execute_result execution_count="9"}
-    datetime.date(2023, 7, 13)
-:::
-:::
+<div class="output execute_result" execution_count="9">
 
-::: {#b6c62352 .cell .code execution_count="10"}
+    datetime.date(2023, 7, 13)
+
+</div>
+
+</div>
+
+<div class="cell code" execution_count="10">
+
 ``` python
 sc.get_expiry(exch='NFO', instrument='FUTIDX', symbol='FINNIFTY',expiry='current')
 ```
 
-::: {.output .execute_result execution_count="10"}
-    datetime.date(2023, 7, 25)
-:::
-:::
+<div class="output execute_result" execution_count="10">
 
-::: {#65414df4 .cell .markdown}
+    datetime.date(2023, 7, 25)
+
+</div>
+
+</div>
+
+<div class="cell markdown">
+
 search_scrip(exch, \*\*kwargs)
 
     The function will return in 3 different ways depending on the inputs
@@ -89,41 +110,55 @@ search_scrip(exch, \*\*kwargs)
     return a dict of  tradingsymbols and tokens
 
     3. if **kwargs input is tradingsymbol then it will return the corresponding token
-:::
 
-::: {#06e0dd90 .cell .code execution_count="11"}
+</div>
+
+<div class="cell code" execution_count="11">
+
 ``` python
 sc.search_scrip(exch='NFO', symbol='BANKNIFTY', instrument='OPTIDX', 
                 optiontype='CE', expiry="13-7-2023", strikeprice=44000)
 ```
 
-::: {.output .execute_result execution_count="11"}
-    array(['BANKNIFTY13JUL23C44000', 41702], dtype=object)
-:::
-:::
+<div class="output execute_result" execution_count="11">
 
-::: {#d6fe86da .cell .code execution_count="12"}
+    array(['BANKNIFTY13JUL23C44000', 41702], dtype=object)
+
+</div>
+
+</div>
+
+<div class="cell code" execution_count="12">
+
 ``` python
 sc.search_scrip(exch='NFO', symbol='BANKNIFTY', instrument='OPTIDX', 
                 expiry="13-7-2023", strikeprice=44000)
 ```
 
-::: {.output .execute_result execution_count="12"}
-    {'BANKNIFTY13JUL23P44000': 41703, 'BANKNIFTY13JUL23C44000': 41702}
-:::
-:::
+<div class="output execute_result" execution_count="12">
 
-::: {#d4ab4cc4 .cell .code execution_count="13"}
+    {'BANKNIFTY13JUL23P44000': 41703, 'BANKNIFTY13JUL23C44000': 41702}
+
+</div>
+
+</div>
+
+<div class="cell code" execution_count="13">
+
 ``` python
 sc.search_scrip(exch='NFO', tradingsymbol='BANKNIFTY13JUL23C44000')
 ```
 
-::: {.output .execute_result execution_count="13"}
-    41702
-:::
-:::
+<div class="output execute_result" execution_count="13">
 
-::: {#a8596802 .cell .markdown}
+    41702
+
+</div>
+
+</div>
+
+<div class="cell markdown">
+
 get_tradingsymbol(exch, \*\*kwargs)
 
     It will return tradingsymbol
@@ -132,30 +167,40 @@ get_tradingsymbol(exch, \*\*kwargs)
     'MCX' & 'CDS'
 
     **kwargs params are symbol, instrument for 'NSE'
-:::
 
-::: {#903d2247 .cell .code execution_count="14"}
+</div>
+
+<div class="cell code" execution_count="14">
+
 ``` python
 sc.get_tradingsymbol(exch='NFO', symbol='BANKNIFTY', instrument='OPTIDX', 
                 optiontype='CE', expiry="13-7-2023", strikeprice=44000)
 ```
 
-::: {.output .execute_result execution_count="14"}
-    'BANKNIFTY13JUL23C44000'
-:::
-:::
+<div class="output execute_result" execution_count="14">
 
-::: {#b54f25ba .cell .code execution_count="15"}
+    'BANKNIFTY13JUL23C44000'
+
+</div>
+
+</div>
+
+<div class="cell code" execution_count="15">
+
 ``` python
 sc.get_tradingsymbol(exch='NSE', symbol='HDFC', instrument='EQ')
 ```
 
-::: {.output .execute_result execution_count="15"}
-    'HDFC-EQ'
-:::
-:::
+<div class="output execute_result" execution_count="15">
 
-::: {#45ca5390 .cell .markdown}
+    'HDFC-EQ'
+
+</div>
+
+</div>
+
+<div class="cell markdown">
+
 get_lotsize(exch, \*\*kwargs)
 
     Returns lotsize of the given symbols depending upon the inputs
@@ -166,24 +211,33 @@ get_lotsize(exch, \*\*kwargs)
 
     3. **kwargs -> symbol (lacks accuracy as it will return the lotsize 
             regardless of expiry.)
-:::
 
-::: {#9aa566cf .cell .code execution_count="16"}
+</div>
+
+<div class="cell code" execution_count="16">
+
 ``` python
 sc.get_lotsize(exch='NFO', symbol='BANKNIFTY')
 ```
 
-::: {.output .execute_result execution_count="16"}
-    25
-:::
-:::
+<div class="output execute_result" execution_count="16">
 
-::: {#892b7f77 .cell .code execution_count="17"}
+    25
+
+</div>
+
+</div>
+
+<div class="cell code" execution_count="17">
+
 ``` python
 sc.get_lotsize(exch='NFO', symbol='BANKNIFTY', expiry='27-7-2023')
 ```
 
-::: {.output .execute_result execution_count="17"}
+<div class="output execute_result" execution_count="17">
+
     15
-:::
-:::
+
+</div>
+
+</div>
